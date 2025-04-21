@@ -14,19 +14,19 @@
                     <div class="card-body p-5 text-center">
                         <div class="mb-md-5 mt-md-4 pb-5">
                             <form id="account" method="post">
-                                <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
-                                <p class="text-white-50 mb-5">Please enter your login and password!</p>
+                                <h2 class="fw-bold mb-2 text-uppercase">Вход</h2>
+                                <p class="text-white-50 mb-5">Напишете вашият имейл и парола!</p>
                                 
                                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                 <div class="form-floating">
                                     <input asp-for="Input.Email" class="form-control form-control-lg" id="typeEmailX" autocomplete="username" aria-required="true" placeholder="Имейл" />
-                                    <label asp-for="Input.Email" for="typeEmailX" class="form-label">Email</label>
+                                    <label asp-for="Input.Email" for="typeEmailX" class="form-label">Имейл</label>
                                     <span asp-validation-for="Input.Email" class="text-danger"></span>
                                 </div>
                                 <br />
                                 <div class="form-floating">
                                     <input asp-for="Input.Password" type="password" id="typePasswordX" class="form-control form-control-lg" autocomplete="current-password" aria-required="true" />
-                                    <label asp-for="Input.Password" class="form-label" for="typePasswordX">Password</label>
+                                    <label asp-for="Input.Password" class="form-label" for="typePasswordX">Парола</label>
                                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                                 </div>
                                 <br/>
@@ -39,14 +39,14 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+                                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Влез</button>
                                 </div>
                                 <div>
                                     <p>
-                                        <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                                        <a id="forgot-password" asp-page="./ForgotPassword">Забравена парола?</a>
                                     </p>
                                     <p>
-                                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+                                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Регистрирай се</a>
                                     </p>
                                 </div>
                             </form>
