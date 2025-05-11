@@ -7,11 +7,25 @@ namespace DiplomenProekt.Controllers
     public class CoursesController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
+
         public CoursesController(UserManager<ApplicationUser> userManager)
         {
             _userManager = userManager;
         }
-        public async Task<IActionResult> Courses()
+        [HttpPost]
+        public async Task<IActionResult> ActivateAndRedirect()
+        {
+            var user = await _userManager.GetUserAsync(User);
+
+            if(user != null)
+            {
+                user.HasPaidSubscription = true;
+                await _userManager.UpdateAsync(user);
+                return RedirectToAction("Index", "Home");
+            }
+            return Redirect("/Identity/Account/Login");
+        }
+        public async Task<IActionResult> Course()
         {
             var user = await _userManager.GetUserAsync(User);
 
@@ -22,8 +36,12 @@ namespace DiplomenProekt.Controllers
 
             if (!user.HasPaidSubscription)
             {
-                return View("pricing");
+                return RedirectToAction("pricing", "Home");
             }
+            return View();
+        }
+        public IActionResult payment()
+        {
             return View();
         }
     }
