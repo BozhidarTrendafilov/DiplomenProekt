@@ -24,7 +24,14 @@
                             <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="pricing">Цени</a>
                             <li class="nav-item">
-                            <a class="nav-link" asp-area="Identity" asp-page="/Account/Login">Вход</a>
+                            @if (!User.Identity.IsAuthenticated)
+                            {
+                                <a class="nav-link" asp-area="Identity" asp-page="/Account/Login">Вход</a>
+                            }
+                            else
+                            {
+                                <a class="nav-link" asp-area="Identity" asp-page="/Account/Logout">Изход</a>
+                            }
                             <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Courses" asp-action="Course">Курсове</a>
                         </ul>
