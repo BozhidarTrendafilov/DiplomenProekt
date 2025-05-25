@@ -5,5 +5,6 @@ namespace DiplomenProekt.Models
     public class ApplicationUser : IdentityUser
     {
         public bool HasPaidSubscription { get; set; }
+        public bool IsAdmin { get; set; }
     }
 }

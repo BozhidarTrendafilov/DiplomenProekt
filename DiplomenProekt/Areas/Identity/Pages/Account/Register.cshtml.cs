@@ -122,6 +122,7 @@ namespace DiplomenProekt.Areas.Identity.Pages.Account
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 var _hasPaidSubscription = false;
+                var _isAdmin = false;
 
                 if (result.Succeeded)
                 {

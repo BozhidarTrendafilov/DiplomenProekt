@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using DiplomenProekt.Models
+@inject UserManager<ApplicationUser> UserManager
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -32,8 +34,20 @@
                             {
                                 <a class="nav-link" asp-area="Identity" asp-page="/Account/Logout">Изход</a>
                             }
+
                             <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Courses" asp-action="Course">Курсове</a>
+
+                            <li class="nav-item">
+                            @{
+                                var user = await UserManager.GetUserAsync(User);
+                                bool isAdmin = user?.IsAdmin ?? false;
+
+                                @if (isAdmin)
+                                {
+                                    <a asp-controller="Admin" asp-action="AdminPage" class="btn btn-warning">Admin Panel</a>
+                                }
+                            }
                         </ul>
                     </div>
                 </div>
